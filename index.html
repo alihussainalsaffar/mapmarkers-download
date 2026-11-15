@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Map Markers</title>
+<meta name="robots" content="noindex">
+<style>
+  :root { --accent: #2f6fd6; --pin: #6a3fc1; --ink: #1d2433; --muted: #5d6677; --line: #d9e1ec; --bg: #eef3f8; --card: #ffffff; }
+  * { box-sizing: border-box; margin: 0; }
+  body { font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.5;
+         background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 48px 48px; }
+  header { background: var(--card); border-bottom: 1px solid var(--line); padding: 18px 20px; font-size: 20px; font-weight: 800; color: var(--accent); }
+  main { max-width: 460px; margin: 0 auto; padding: 24px 16px 40px; }
+  .logo { display: block; width: 96px; height: 96px; border-radius: 22px; margin: 0 auto 16px; background: #cfe3f5; border: 2px solid var(--accent); position: relative; overflow: hidden; }
+  .logo::before { content: ""; position: absolute; left: 30px; top: 18px; width: 36px; height: 36px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); background: var(--pin); }
+  .logo::after { content: ""; position: absolute; left: 42px; top: 30px; width: 12px; height: 12px; border-radius: 50%; background: #fff; }
+  h1 { font-size: 24px; text-align: center; }
+  .lead { color: var(--muted); text-align: center; margin: 6px 0 24px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; margin-bottom: 14px; }
+  .card.primary { border-color: var(--accent); box-shadow: 0 2px 10px rgba(47,111,214,.15); }
+  h2 { font-size: 17px; margin-bottom: 4px; }
+  .card p { color: var(--muted); font-size: 15px; }
+  .btn { display: block; text-align: center; text-decoration: none; background: var(--accent); color: #fff; font-weight: 700; padding: 13px; border-radius: 10px; margin-top: 12px; }
+  .btn.alt { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+  ol { color: var(--muted); font-size: 15px; padding-left: 20px; margin-top: 10px; }
+  footer { color: var(--muted); font-size: 13px; text-align: center; margin-top: 18px; }
+</style>
+</head>
+<body>
+<header>Map Markers</header>
+<main>
+  <div class="logo" aria-hidden="true"></div>
+  <h1>Install Map Markers</h1>
+  <p class="lead">Flutter project by Ali Alsaffar</p>
+
+  <section class="card" id="android">
+    <h2>Android</h2>
+    <p>Save your favorite places on a map, search for addresses, and get directions. The app asks for your location only when you tap the location or directions button.</p>
+    <a class="btn" href="map-markers.apk" download>Download for Android (52 MB)</a>
+    <ol>
+      <li>Open the downloaded file.</li>
+      <li>If asked, allow installing from this source.</li>
+      <li>Tap Install, then Open.</li>
+    </ol>
+  </section>
+
+  <section class="card" id="ios">
+    <h2>iPhone</h2>
+    <p>iPhone apps can't be installed from a web page, so this opens the same app in Safari. Allow location when Safari asks, so the location and directions buttons work.</p>
+    <a class="btn alt" href="app/">Open Map Markers in the browser</a>
+    <ol>
+      <li>Tap Share in Safari.</li>
+      <li>Tap Add to Home Screen to keep it as an icon.</li>
+    </ol>
+  </section>
+
+  <footer>Source code is in the private Gitea repo aalsaffar/map-markers. Map data © OpenStreetMap contributors.</footer>
+</main>
+<script>
+  // Show the visitor's own platform first.
+  var ua = navigator.userAgent;
+  var isIos = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var first = document.getElementById(isIos ? 'ios' : 'android');
+  first.classList.add('primary');
+  first.parentNode.insertBefore(first, document.querySelector('.card'));
+</script>
+</body>
+</html>
